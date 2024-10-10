@@ -1,1 +1,23 @@
-mnjuj
+echo:
+    prints out the text arguments to the display
+
+pwd:
+    print working directory, shows you which directory you are in
+
+cd:
+    change directory
+    . -> current directory
+    .. -> changes to directory above your current
+    ~ -> changes to current user /home directory
+    - -> take you to the previous directory you were just at
+    / -> take you to root
+
+ls:
+    list files and direcoties
+    -a -> shows hidden files
+    -l -> show permissions, user owner, group owner, last modified/created date
+    -h -> Human readable - Size in MB or GB
+    -t -> sort by modification time, newest first
+touh:
+    created a new file, also changes timestamps on existing files and directories
+
