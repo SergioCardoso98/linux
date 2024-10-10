@@ -1,23 +1,105 @@
-echo:
+echo: echo "text/VAR"
     prints out the text arguments to the display
 
-pwd:
+pwd: pwd
     print working directory, shows you which directory you are in
 
-cd:
+cd: cd [options]
     change directory
     . -> current directory
     .. -> changes to directory above your current
     ~ -> changes to current user /home directory
     - -> take you to the previous directory you were just at
     / -> take you to root
+    (no arguments) -> changes to current user /home directory 
 
-ls:
+ls: ls [options]
     list files and direcoties
     -a -> shows hidden files
     -l -> show permissions, user owner, group owner, last modified/created date
     -h -> Human readable - Size in MB or GB
     -t -> sort by modification time, newest first
-touh:
+    -S -> sort by file/dir type
+
+touh: touch [filename]
     created a new file, also changes timestamps on existing files and directories
 
+file: file [filename]
+    will show you a description of the file’s contents as In Linux, filenames aren’t required to represent the contents of the file. You can create a file called funny.gif that isn’t actually a GIF.
+
+cat: cat [filename] [options(optional)] [filename (optional)] ...
+    short for concatenate, it not only displays file contents but it can combine multiple files and show you the output of them
+    ex: cat text1 >/>> text2
+    > -> will overwrite output of file text1 to the file text2
+    >> -> will append output of file text1 to the file text2
+
+less: less [filename]
+    viewing text files larger than a simple output, text is displayed in a paged manner, so you can navigate through a text file page by page.
+    q -> quit out of less and go back to your shell.
+    Page up, Page down, Up and Down -> Navigate using the arrow keys and page keys.
+    g -> Moves to beginning of the text file.
+    G -> Moves to the end of the text file.
+    /(search) -> search for specific text inside the text document
+    h -> help
+
+history: history
+    history of the commands typed
+
+cp: cp [options(optional)] [filename] [directory]/[filename(optional)]
+    copy comand, will copy files from one place to another
+    -r -> copies directory and it's contents
+    -i -> prompt to confirm overwrite
+    -v -> verbose
+    -u -> if the source file is newer than the destination file or if the destination file does not exist
+    -f -> forces the cp command to overwrite the destination file without prompting the user
+    -p -> preserves the original file attributes like ownership, permissions, timestamps, and links when copying a file, etc
+
+mv: mv [options(optional)] [filename] [filename/directory]
+    moving files and also renaming them
+    -i -> prompt to confirm overwrite
+    -b -> makes backup with a~
+    -v -> verbose
+
+mkdir: mkdir [options(optional)] [directory]
+    -p -> create subdirectories at the same time
+
+rm: rm [options(optional)] [filename]
+    -f -> remove all files, whether they are write protected or not, without prompting the user
+    -i -> prompt on whether you want to actually remove the files
+    -r / rmdir -> remove a directory
+
+find: find [where] [expression] [pattern]
+    -name <pattern>	-> Search for files or directories matching the specified name pattern.
+    -iname <pattern> -> Like -name but case-insensitive.
+    -type <type> -> Search by file type: f for regular file, d for directory, l for symlink, etc.
+    -path <pattern> -> Search for files whose full path matches the pattern.
+    -ipath <pattern> -> Case-insensitive version of -path.
+    -user <name> -> Search for files owned by a specific user.
+    -group <name> -> Search for files owned by a specific group.
+    -perm <mode> -> Search for files with specific permissions (e.g., 755 or +x).
+    -size <n> -> Search by file size. e.g., +100M for files larger than 100 MB.
+    -mtime <n> -> Search for files modified exactly n days ago (+n for more than, -n for less).
+    -ctime <n> -> Search for files whose metadata (e.g., permissions) changed n days ago.
+    -atime <n> -> Search for files accessed n days ago.
+    -newer <file> -> Search for files modified more recently than the specified file.
+    -empty -> Search for empty files or directories.
+    -executable -> Search for files that are executable.
+    -readable -> Search for files that are readable.
+    -writable -> Search for files that are writable.
+
+help: help or [command] --help
+    will give you a description and the options you can use when you want to run x
+
+man: man [comamnd]
+    manual of the comand
+
+whatis: whatis [comamnd]
+    brief description of command line programs.
+
+alias: alias [alias]='[expression]'
+    create an alias for a command
+    ~/.bashrc -> persists after rebot
+    unalias -> destroys alias created
+
+exit: exit \ logout
+    To exit from the shell
