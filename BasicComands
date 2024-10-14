@@ -1,3 +1,25 @@
+Index:
+    echo
+    pwd
+    cd
+    ls
+    touch
+    file
+    cat
+    less
+    history
+    cp
+    mv
+    mkdir
+    rm
+    find
+    help   
+    man
+    whatis
+    alias
+    exit
+
+
 echo: echo "text/VAR"
     prints out the text arguments to the display
 
@@ -21,7 +43,7 @@ ls: ls [options]
     -t -> sort by modification time, newest first
     -S -> sort by file/dir type
 
-touh: touch [filename]
+touch: touch [filename]
     created a new file, also changes timestamps on existing files and directories
 
 file: file [filename]
