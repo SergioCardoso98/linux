@@ -1,0 +1,32 @@
+devices info is in the
+    /dev : /dev directory is simple, it allows other programs to access devices themselves
+    /sys : is used to view information and manage the device, contains all the information for all devices on your system, such as the manufacturer and model, where the device is plugged in, the state of the device, the hierarchy of devices and more
+
+ls -l /dev
+brw-rw----   1 root disk      8,   0 Dec 20 20:13 sda
+crw-rw-rw-   1 root root      1,   3 Dec 20 20:13 null
+srw-rw-rw-   1 root root           0 Dec 20 20:13 log
+prw-r--r--   1 root root           0 Dec 20 20:13 fdata
+
+type
+    c : character
+        These devices transfer data, but one a character at a time
+    b - block
+        These devices transfer data, but in large fixed-sized blocks. devices that utilize data blocks as block devices, such as harddrives, filesystems, etc.
+    p - pipe
+        Named pipes allow two or more processes to communicate with each other, these are similar to character devices, but instead of having output sent to a device, it's sent to another process.
+    s - socket
+        Socket devices facilitate communication between processes, similar to pipe devices but they can communicate with many processes at once.
+Permissions
+Owner
+Group
+Major Device Number
+    major device number represents the device driver that is used
+Minor Device Number
+    minor number tells the kernel which unique device it is in this driver class
+Timestamp
+Device Name
+
+lsusb : lists USB devices 
+lspci : lists PCI devices
+lsscsi : lists SCSI Devices
