@@ -1,7 +1,60 @@
 Index:
-  stdout
-  stdin
-  stderr
+  stdout, stdin, stderr : I/O of a command can use this I/O with >/>> & < & 2>
+  | & tee : The pipe operator |, represented by a vertical bar, allows us to get the stdout of a command and make that the stdin to another process & tee used for write the output of my command to two different streams
+  cut : extracts portions of text from a file
+  paste : 
+  head : gets from the top of the file x number of lines
+  tail : gets from the bottom of the file x number of lines
+  expand / unexpand : expand will change the TABS in files for spaces, unexpand will be the reverse
+  sort : sorts things, real power of sort comes with its ability to be combined with other commands example: ls /etc | sort -rn
+  tr : allows you to translate a set of characters into another set of characters example of translating all lower case characters to uppercase characters
+  wc : It display the number of lines, number of words and number of bytes, respectively
+  grep : grep command is quite possibly the most common text processing command you will use. It allows you to search files for characters that match a certain pattern
 
-stdou: >
+
+| & tee : example -> ls | tee [file1] [file2] or ls -la [path] | less 
+        
+cut : cut [options] [file]
+    -c : cut by character
+        -c x : specific character in position x
+        -c x-y : characters between position x and y
+        -c -x : characters in positions before x
+        -c x- : characters in positions after x
+    -f : cuts text based off of fields, by default it uses TABs as delimiters, so everything separated by a TAB is considered a field
+    -d "x" : change the TAB delimiter to a "x" delimiter 
+
+paste : paste [options] [file]
+    -s : combines all line into one
+    -d "x" : change the TAB delimiter to a "x" delimiter
+
+head : head [options] [file]
+    -n "x" : number of lines to get
+
+tail : tail [options] [file]   
+    -n "x" : number of lines to get
+    -f : see file in realtime, if lines are added at the bottom
+
+expand/unexpand : (un)expand [options] [file] 
+    -a : on unexpand, to change all spaces to TABS, otherwise only leading spaces will be changed to TABS
+
+sort : sort [options] [file]
+    -r : reverse sort
+    -n : numerical sort
+
+tr : tr [expression] [expression]
+    lowercase to uppercase example a-z A-Z
+
+wc : wc [options] [file]
+    -l : number of lines
+    -w : number of words
+    -c : number of bytes
+
+grep : grep [options] [expression/text to search] [file]
+    -i : case sesitive text to search
+    -v : invert search
+    -r / -R : Searches recursively through directories. -r follows symbolic links to directories, while -R doesn't.
+    -w : Matches whole words only
+    -o : Displays only the matching part of the lines
+    -n : Displays the line numbers of matching lines
+    -c : Displays the count of matching lines instead of the actual lines
     
