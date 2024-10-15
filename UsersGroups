@@ -1,0 +1,85 @@
+The system uses a user ID (UID) to identify a user. To find out what users are mapped to what ID, look at the /etc/passwd file.
+    /etc/passwd : shows a list of users and detailed information about them
+        root:x:0:0:root:/root:/bin/bash
+            root : username
+            x : encrypted user passwords, "*" means the user doesn't have login access & blank field that means the user doesn't have a password.
+            0 : The user ID
+            0 : The group ID
+            root : GECOS field - This is used to generally leave comments about the user or account such as their real name or phone number, it is comma delimited.
+            /root : User's home directory
+            /bin/bash : User's shell
+
+    /etc/shadow : used to store information about user authentication
+        root:MyEPTEa$6Nonsense:15000:0:99999:7:::
+            root : Username
+            MyEPTEa$6Nonsense : Encrypted password
+            15000 : Date of last password changed - expressed as the number of days since Jan 1, 1970. If there is a 0 that means the user should change their password the next time they login
+            0 : Days that a user will have to wait before being able to change their password again
+            99999 : Maximum number of days before a user has to change their password
+            7 : Number of days before a password is going to expire
+              : Number of days after a password has expired to allow login with their password
+              : date that user will not be able to login
+              : Reserved field for future use
+
+    /etc/group
+        root:*:0:pete
+            root : Group name
+            * : Group password - there isn't a need to set a group password, using an elevated privilege like sudo is standard. A "*" will be put in place as the default value.
+            0 : Group ID (GID)
+            pete : List of users - you can manually specify users you want in a specific group
+
+----------------------------------------------------------------------------------
+useradd & userdel vs userdel & deluser
+Level:
+
+useradd: Low-level system tool.
+adduser: High-level, user-friendly script.
+Interactive:
+
+useradd: No, non-interactive by default.
+adduser: Yes, asks questions during setup.
+Home Directory Creation:
+
+useradd: Does not create a home directory unless the -m option is used.
+adduser: Automatically creates a home directory by default.
+Password Setup:
+
+useradd: Requires a separate passwd command to set the password.
+adduser: Prompts for a password interactively during user creation.
+Default Configurations:
+
+useradd: Minimal defaults, requires options for most configurations.
+adduser: Uses sensible defaults, automating much of the setup.
+Flexibility and Customization:
+
+useradd: Highly flexible, allowing customization for UID, GID, shell, etc.
+adduser: Simplified, but offers less customization.
+Use Case:
+
+useradd: Best for advanced use, scripting, or manual configurations.
+adduser: Best for everyday use, convenient for quick user creation.
+-------------------------------------------------------------------------------------------
+
+adduser : adduser [username]
+    creates user
+    adduser [username] [groupname] : adds user to group
+
+deluser :  deluser [username]
+    deletes user, user cant be logged in, Requires manual group deletion
+    deluser [username] [groupname] : deletes user from group
+
+id : id [username]
+    shows primary group and other groups from x user
+
+usermod -g : usermod -g [username] [group]
+    changes primary group of user
+
+passwd : passwd [username(only root can change other user pass)]
+    change user pass, change the password of yourself or another user (if you are root).
+
+groupadd : groupadd [groupname]
+    creates a group
+
+groupdel : groupdel [groupname]
+    deletes a group
+    cant have user with targeted group as primary group
