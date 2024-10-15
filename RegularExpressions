@@ -1,0 +1,31 @@
+"sally sells seashells 
+
+by the seashore"
+
+^b : by the seashore
+seashore$ : by the seashore
+b. : by
+
+
+d[iou]g : dig, dog, dug
+d[^i]g : dog and dug but not dig
+d[a-c]g : will match patterns like dag, dbg, and dcg
+d[A-C]g : will match dAg, dBg and dCg but not dag, dbg and dcg
+
+
+* : Matches 0 or more of the preceding character, Example: ab* matches a, ab, abb, abbbbb.
++ : Matches 1 or more of the preceding character. Example: ab+ matches ab, abb, abbbb, but not a.
+? : Matches 0 or 1 of the preceding character. Example: ab? matches a or ab.
+{n} : Matches exactly n occurrences of the preceding character. Example: a{3} matches aaa.
+{n,m} : Matches between n and m occurrences of the preceding character. Example: a{2,4} matches aa, aaa, or aaaa.
+
+
+\d – Matches any digit (same as [0-9]).
+\w – Matches any word character (letters, digits, and underscore).
+\s – Matches any whitespace character (spaces, tabs, newlines).
+\b – Matches a word boundary (the edge of a word). Example: \bword\b matches word as a whole word, but not sword.
+
+
+( ) : Groups characters together so that you can apply operators like *, +, or ? to the whole group. Example: (abc)+ matches abc, abcabc, etc.
+| (Pipe) : Acts like OR, matches either the expression before or after it. Example: cat|dog matches cat or dog.
+\ : Escape character to match special characters literally. Example: \. matches an actual dot .
