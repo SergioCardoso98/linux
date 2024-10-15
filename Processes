@@ -1,0 +1,37 @@
+/proc : 
+    files of the processes, there are sub-directories for every PID
+
+ps : ps [options]
+    PID : Process ID
+    TTY : Controlling terminal associated with the process
+    TIME : Total CPU usage time
+    CMD : Name of executable/command
+    a : all processes running, including the ones being ran by other users
+    u : displays all processes running, including the ones being ran by other users. The u shows more
+        USER : The effective user (the one whose access we are using)
+        PID : Process ID
+        %CPU : CPU time used divided by the time the process has been running
+        %MEM : Ratio of the process's resident set size to the physical memory on the machine
+        VSZ : Virtual memory usage of the entire process
+        RSS : Resident set size, the non-swapped physical memory that a task has used
+        TTY : Controlling terminal associated with the process
+        STAT : Process status code
+        START : Start time of the process
+        TIME : Total CPU usage time
+        COMMAND : Name of executable/command
+    x : all processes that don't have a TTY associated with it
+
+top : top
+    give process info realtime
+    NI column, that is the niceness level of a process, number to determine their priority for the CPU. high number means lower priority for the CPU low or negative number wants to get as much of the CPU as possible
+    nice : nice -n 5 apt upgrade -> nice command is used to set priority for a new process
+    renice : renice 10 -p 3245 -> renice command is used to set priority on an existing process
+
+kill : kill [code] [Process ID]
+    SIGHUP or HUP or 1 : Hangup, sent to a process when the controlling terminal is closed. For example, if you closed a terminal window that had a process running in it, you would get a SIGHUP signal. So basically you've been hung up on
+    SIGINT or INT or 2 : Is an interrupt signal, so you can use Ctrl-C and the system will try to gracefully kill the process
+    SIGKILL or KILL or 9 : Kill the process, kill it with fire, doesn't do any cleanup
+    SIGTERM or TERM or 15 : Kill the process, but allow it to do some cleanup first
+    SIGSTOP or STOP : Stop/suspend a process
+
+
