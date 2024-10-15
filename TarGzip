@@ -1,0 +1,18 @@
+tar : tar [options] [folder to create] [target] 
+    c : creates the file
+    x : extracts the file \ with -C after the chosen file to extract, allows selecting the destination
+    v : shows the process of archiving the file
+    f : name of the file that will be the archive (almost always has to be used)
+    r : appends the chosen file to the target file
+    t : shows the contents of a file
+    z : compresses
+        
+gzip : gzip [options] [target] 
+    only compresses files
+    -k : keeps the original file
+    -c : tells gzip to write to standard output and redirect the output to a file
+    -v : shows the percentage of the process
+    -r "directory" : compresses all files in a directory
+    -d : decompresses a file
+    -dk : keeps the compressed file when decompressing
+    -dr : decompresses all files in a directory
