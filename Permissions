@@ -1,0 +1,60 @@
+...
+d | rw(x/s) rw(x/s) rwx(t) | 2 | root | root      | 4096 | Oct 10 19:01 | directoryX
+- | rw(x/s) rw(x/s) rwx(t) | 1 | root | usertest2 | 0    | Oct 15 21:12 | fileX
+1         2        3    4          4        6          7            8
+...
+
+1 : directory = d; file= -; l = link/shortcut
+2 : read/write/execute permissions, 1st -> user owner; 2nd -> group owner; 3rd -> other users
+    SUID and SGID which will show an "s" instead of an "x", this means it will allow the program to be run as if it was ran by owner user/owner group
+        SUID s will appear on the 1st group; SGID on the 2nd, for example ... rws r-s r-- ...
+    sticky bit will show as a "t" at the end
+3 : number of links in the OS that point to file or folder
+4 : user owner of dir/file
+5 : group owner of dir/file
+6 : size in bits
+7 : last changed timestamp
+8 : name
+
+
+chmod : chmod [value combination] [directory/file]
+    values : example, rwx rwx rwx would have values of 777
+        r : 4
+        w : 2
+        x : 1
+    to set the SUID we put a 4 before the combination like 4xxx, so that users can run/execute file as admin even tough they arent the owner
+    to set the SGID we put a 2 before the combination like 2xxx,                                 ""
+    to set the sticky bit we put 1 before the combination like 1xxx, This permission bit, "sticks a file/directory" this means that only the owner or the root user can delete or modify the file.
+        permission bit at the end here t, this means everyone can add files, write files, modify files in the /tmp directory, but only root can delete the /tmp directory.
+            rwx rwxr rwxt
+
+chown : chown [options] [user] [file/dir]
+    changes owner of dir/file, to also change user and group at same time
+          chown [options] [user]:[group] [file/dir]
+    -R : changes directory and everything inside 
+
+chgrp : chgrp [options] [user] [file/dir]
+    changes group owner of dir/file
+    -R : changes directory and everything inside 
+
+umask : umask [value combination]
+    change that default set of permissions
+
+
+Process permissions
+    When you run the passwd command with SUID enabled, it runs as the root user temporarily. However, this doesn't mean you can change other users' passwords. Why? 
+    Because Linux uses three types of user IDs (UIDs) for each process:
+    
+        Effective UID: This determines what permissions the process has. For example, if Bob runs a command, the process runs with his permissions, and any files created will belong to him.
+        
+        Real UID: This is the ID of the user who started the process. It helps track who launched it.
+        
+        Saved UID: This allows a process to switch between the real and effective UIDs, which helps limit when elevated privileges (like root) are used.
+    
+    Now, using the passwd command as an example:
+    
+    Normally, your effective UID is your own user ID, say 500.
+    Since passwd has SUID enabled, when you run it, your effective UID temporarily switches to 0 (root) so the command can access system files as root.
+    But you can't change someone else's password (like Sally’s, whose UID is 600), because the process still knows your real UID is 500, limiting your actions.
+
+
