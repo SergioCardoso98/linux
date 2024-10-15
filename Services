@@ -1,0 +1,29 @@
+The main object that systemd works with are known as units. Systemd doesn't just stop and start services, it can mount filesystems, monitor your network sockets, etc and because of that robustness it has different types of units it operates. The most common units are:
+
+Service units - these are the services we've been starting and stopping, these unit files end in .service
+Mount units - These mount filesystems, these unit files end in .mount
+Target units - These group together other units, the files end in .target
+For example, let's say we boot into our default.target, well this target groups together the networking.service unit, crond.service unit, etc, so once we activate a single unit, everything below that unit gets activated as well.
+
+
+
+List units
+  systemctl list-units
+
+View status of unit
+  systemctl status networking.service
+
+Start a service
+  systemctl start networking.service
+
+Stop a service
+  systemctl stop networking.service
+
+Restart a service
+  systemctl restart networking.service
+
+Enable a unit
+  systemctl enable networking.service
+
+Disable a unit
+  systemctl disable networking.service
