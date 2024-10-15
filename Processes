@@ -20,6 +20,7 @@ ps : ps [options]
         TIME : Total CPU usage time
         COMMAND : Name of executable/command
     x : all processes that don't have a TTY associated with it
+    f : find specific PID or shows diferent formating in command column if no PID number is sent
 
 top : top
     give process info realtime
@@ -33,5 +34,9 @@ kill : kill [code] [Process ID]
     SIGKILL or KILL or 9 : Kill the process, kill it with fire, doesn't do any cleanup
     SIGTERM or TERM or 15 : Kill the process, but allow it to do some cleanup first
     SIGSTOP or STOP : Stop/suspend a process
+
+jobs, bg, fg : 
+    see, bring to foreground jobs running in the back groud
+    ex : sleep 123 &
 
 
