@@ -1,0 +1,61 @@
+Linux dirs : 
+    / : The root directory of the entire filesystem hierarchy, everything is nestled under this directory.
+    /bin : Essential ready-to-run programs (binaries), includes the most basic commands such as ls and cp.
+    /boot : Contains kernel boot loader files.
+    /dev : Device files.
+    /etc : Core system configuration directory, should hold only configuration files and not any binaries.
+    /home : Personal directories for users, holds your documents, files, settings, etc.
+    /lib : Holds library files that binaries can use.
+    /media : Used as an attachment point for removable media like USB drives.
+    /mnt : Temporarily mounted filesystems.
+    /opt : Optional application software packages.
+    /proc : Information about currently running processes.
+    /root : The root user’s home directory.
+    /run : Information about the running system since the last boot.
+    /sbin : Contains essential system binaries, usually can only be run by root.
+    /srv : Site-specific data which are served by the system.
+    /tmp : Storage for temporary files.
+    /usr : This is unfortunately named, most often it does not contain user files in the sense of a home folder. It’s meant for user-installed software and utilities, but you can add personal directories if needed. Subdirectories include /usr/bin, /usr/local, etc.
+    /var : Variable directory, used for system logging, user tracking, caches, etc. Basically, anything that changes frequently.
+
+Types of file systems : 
+    ext4 : This is the most current version of the native Linux filesystems. It is compatible with the older ext2 and ext3 versions. It supports disk volumes up to 1 exabyte and file sizes up to 16 terabytes and much more. It is the standard choice for Linux filesystems.
+    Btrfs : "Better or Butter FS" it is a new filesystem for Linux that comes with snapshots, incremental backups, performance increase and much more. It is widely available, but not quite stable and compatible yet.
+    XFS : High performance journaling file system, great for a system with large files such as a media server.
+    NTFS and FAT : Windows filesystems
+    HFS+ : Macintosh filesystem
+
+df : df [options]
+    lists filesystems
+    -i : see free iNodes
+        An inode (index node) is an entry in this table and there is one for every file. It describes everything about the file, File type, Timestamps, Size of the file, etc...
+    -T : type
+    -h : human readable 
+
+du : du [options]
+    usage in a folder
+    -h : human readable 
+
+stat : stat [dir/file]
+    shows info of file/dir
+
+ln : ln [options] [target] [linkName]
+    creates links(shortcuts kinda)
+    symbolic link : equivalent of windows shortcuts in linux, it creates only the link
+        $ ln -s myfile myfilelink
+        $ ls -li
+        total 12
+          151 -rw-rw-r-- 1 pete pete 7 Jan 21 21:36 myfile
+        93401 -rw-rw-r-- 1 pete pete 8 Jan 21 21:36 myfile2
+        93402 -rw-rw-r-- 1 pete pete 8 Jan 21 21:36 myfile3
+        93403 lrwxrwxrwx 1 pete pete 6 Jan 21 21:39 myfilelink -> myfile
+    hard link : it creates a file with the same iNode as original file, modified the contents of myfile2 or myhardlink, the change would be seen on both, but if I deleted myfile2, the file would still be accessible through myhardlink
+        $ ln myfile2 myhardlink
+        $ ls -li
+        total 16
+          151 -rw-rw-r-- 1 pete pete 7 Jan 21 21:36 myfile
+        93401 -rw-rw-r-- 2 pete pete 8 Jan 21 21:36 myfile2
+        93402 -rw-rw-r-- 1 pete pete 8 Jan 21 21:36 myfile3
+        93401 -rw-rw-r-- 2 pete pete 8 Jan 21 21:36 myhardlink
+    -s : creates symbolic link
+    
