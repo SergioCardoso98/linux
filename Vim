@@ -1,0 +1,31 @@
+vim : vim [file]
+    search : 
+        /"x" : will search for "x"
+        ?"x" : will searcf for "x" but will start from the end
+        "n" to go forward or "N" to go backward in search results
+    navigation :
+        h or the left arrow : will move left one character
+        k or the up arrow : will move up one line
+        j or the down arrow : will move down one line
+        l or the right arrow : will move right one character
+    appending text :
+        i : insert text before the cursor
+        O : insert text on the previous line
+        o : insert text on the next line
+        a : append text after the cursor
+        A : append text at the end of the line
+        esc : stop inserting mode
+    editing :
+        x : used to cut the selected text also used for deleting characters
+        dd : used to delete the current line
+        y : yank or copy whatever is selected
+        yy : yank or copy the current line
+        p : paste the copied text before the cursor
+    saving : 
+        :w - writes or saves the file
+        :q - quit out of vim
+        :wq - write and then quit
+        :q! - quit out of vim without saving the file
+        ZZ - equivalent of :wq, but one character faster
+        u - undo your last action
+        Ctrl-r - redo your last action
